@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+        .header {
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>
+        Bonjour
+        <span th:text="${client.nom}">Nom</span>
+        <span th:text="${client.prenom}">Prénom</span>
+    </h1>
+    <form action="/store/home/logout" method="get">
+        <button type="submit" class="logout-btn">Déconnexion</button>
+    </form>
+</div>
+</body>
+</html>

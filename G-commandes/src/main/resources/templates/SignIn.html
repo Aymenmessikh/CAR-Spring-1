@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connection Client</title>
+</head>
+<body>
+
+<center>
+    <form action="/store/home/login" method="post">
+        <h2>Connection Client</h2>
+
+        <table>
+            <tr>
+                <td>Email :</td>
+                <td><input type="email" name="email" required></td>
+            </tr>
+
+            <tr>
+                <td>Mot de passe :</td>
+                <td><input type="password" name="mdp" required></td>
+            </tr>
+
+            <tr>
+                <td colspan="2" align="center">
+                    <br>
+                    <input type="submit" value="Se Connceter">
+                </td>
+
+                <td colspan="2" align="center">
+                    <br>
+                    <input type="button" value="Nouvel Client" onclick="window.location.href='/store/home/inscription'">
+                </td>
+
+            </tr>
+        </table>
+    </form>
+</center>
+
+</body>
+</html>
