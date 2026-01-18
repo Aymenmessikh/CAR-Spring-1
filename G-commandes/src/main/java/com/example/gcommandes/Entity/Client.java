@@ -2,6 +2,8 @@ package com.example.gcommandes.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Client {
 
@@ -17,6 +19,9 @@ public class Client {
     private String nom;
     @Column(nullable = false)
     private String prenom;
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    private List<Commande> commandes;
 
     public Client() {
     }
@@ -66,5 +71,13 @@ public class Client {
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
+    }
+
+    public List<Commande> getCommandes() {
+        return commandes;
+    }
+
+    public void setCommandes(List<Commande> commandes) {
+        this.commandes = commandes;
     }
 }

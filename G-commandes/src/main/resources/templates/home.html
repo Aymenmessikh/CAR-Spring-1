@@ -21,5 +21,43 @@
         <button type="submit" class="logout-btn">Déconnexion</button>
     </form>
 </div>
+
+<br>
+<br>
+<hr>
+<hr>
+<br>
+<br>
+<h2>Ajouter une commande</h2>
+<form th:action="@{/store/commandes}" method="post">
+    <input type="hidden" name="clientId" th:value="${client.id}" />
+
+    <label>Nom de la commande :</label>
+    <input type="text" name="nom" required />
+
+    <button type="submit">Ajouter Commande</button>
+</form>
+<br>
+<br>
+<h2>Mes commandes</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="cmd : ${commandes}">
+        <td th:text="${cmd.id}"></td>
+        <td th:text="${cmd.nom}"></td>
+        <td th:text="${cmd.dateCommande}"></td>
+    </tr>
+    </tbody>
+</table>
+
 </body>
 </html>

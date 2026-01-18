@@ -27,5 +27,10 @@ public class ClientService {
         }
         return new ClientResponseDto(client.getId(),client.getEmail(),client.getNom(),client.getPrenom());
     }
+    public ClientResponseDto getById(Long id) {
+        Client client = clientRepository.findById(id).orElseThrow();
+        return new ClientResponseDto(client.getId(), client.getEmail(), client.getNom(), client.getPrenom());
+    }
+
 
 }
