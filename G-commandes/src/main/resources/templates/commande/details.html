@@ -34,6 +34,7 @@
         <td th:text="${ligne.prixUnitaire}"></td>
         <td>
             <form th:action="@{/store/commandes/{id}/ligne-commande/remove(id=${commande.id})}" method="post">
+                <input type="hidden" name="ligneCommandeId" th:value="${ligne.idLigneCmnd}" />
                 <button type="submit">Supprimer</button>
             </form>
         </td>
@@ -47,16 +48,15 @@
 
 <form th:action="@{/store/commandes/{id}/ligne-commande/add(id=${commande.id})}" method="post"
       th:object="${ligneCommande}">
-
     <label>Libellé :</label>
     <input type="text" th:field="*{libelle}" required /><br>
-<br>
+    <br>
     <label>Quantité :</label>
     <input type="number" th:field="*{quantite}" required /><br>
     <br>
     <label>Prix Unitaire :</label>
     <input type="number" th:field="*{prixUnitaire}" required /><br>
-<br>
+    <br>
     <button type="submit">Ajouter</button>
 </form>
 
