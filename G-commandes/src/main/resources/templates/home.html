@@ -18,7 +18,7 @@
         <span th:text="${client.prenom}">Prénom</span>
     </h1>
     <form action="/store/home/logout" method="get">
-        <button type="submit" class="logout-btn">Déconnexion</button>
+        <button type="submit" >Déconnexion</button>
     </form>
 </div>
 
@@ -28,6 +28,7 @@
 <hr>
 <br>
 <br>
+
 <h2>Ajouter une commande</h2>
 <form th:action="@{/store/commandes}" method="post">
     <input type="hidden" name="clientId" th:value="${client.id}" />
@@ -53,10 +54,15 @@
     <tbody>
     <tr th:each="cmd : ${commandes}">
         <td th:text="${cmd.id}"></td>
-        <td th:text="${cmd.nom}"></td>
+        <td>
+            <a th:href="@{/store/commandes/{id}(id=${cmd.id})}"
+               th:text="${cmd.nom}">
+            </a>
+        </td>
         <td th:text="${cmd.dateCommande}"></td>
     </tr>
     </tbody>
+
 </table>
 
 </body>

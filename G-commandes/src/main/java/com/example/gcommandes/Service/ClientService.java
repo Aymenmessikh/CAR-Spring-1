@@ -22,7 +22,7 @@ public class ClientService {
 
     public ClientResponseDto login(String email, String mdp) {
         Client client = clientRepository.getClientByEmail(email);
-        if (client == null && !client.getMdp().equals(mdp)) {
+        if (client == null || !client.getMdp().equals(mdp)) {
             throw new UnsupportedOperationException("Les mots de passe ne correspondent pas");
         }
         return new ClientResponseDto(client.getId(),client.getEmail(),client.getNom(),client.getPrenom());

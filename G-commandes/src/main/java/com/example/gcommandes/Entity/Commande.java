@@ -3,6 +3,7 @@ package com.example.gcommandes.Entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Commande {
@@ -17,6 +18,10 @@ public class Commande {
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "commande_id")
+    private List<LigneCommande> ligneCommandes;
 
     public Commande() {
     }
@@ -57,5 +62,20 @@ public class Commande {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public List<LigneCommande> getLigneCommandes() {
+        return ligneCommandes;
+    }
+
+    public void setLigneCommandes(List<LigneCommande> ligneCommandes) {
+        this.ligneCommandes = ligneCommandes;
+    }
+    public void addLigneCommande(LigneCommande ligneCommande) {
+        ligneCommandes.add(ligneCommande);
+    }
+
+    public void removeItem(LigneCommande ligneCommande) {
+        ligneCommandes.remove(ligneCommande);
     }
 }
