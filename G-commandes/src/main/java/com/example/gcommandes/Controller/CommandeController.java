@@ -43,6 +43,13 @@ public class CommandeController {
         mv.addObject("ligneCommande", new LigneCommande());
         return mv;
     }
+    @GetMapping("/{id}/print")
+    public ModelAndView printCommande(@PathVariable Long id) {
+        Commande commande = commandeSerivce.getCommandeById(id);
+        ModelAndView mv = new ModelAndView("commande/print");
+        mv.addObject("commande", commande);
+        return mv;
+    }
 
 
 }

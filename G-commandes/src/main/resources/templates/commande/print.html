@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Impression Commande</title>
+</head>
+<body>
+
+<h1>Commande</h1>
+
+<p>
+    <strong>Nom :</strong>
+    <span th:text="${commande.nom}"></span>
+</p>
+
+<hr>
+
+<h2>Lignes de commande</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>Libellé</th>
+        <th>Quantité</th>
+        <th>Prix Unitaire</th>
+        <th>Total</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="ligne : ${commande.ligneCommandes}">
+        <td th:text="${ligne.libelle}"></td>
+        <td th:text="${ligne.quantite}"></td>
+        <td th:text="${ligne.prixUnitaire}"></td>
+        <td th:text="${ligne.quantite * ligne.prixUnitaire}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+
+</body>
+</html>
